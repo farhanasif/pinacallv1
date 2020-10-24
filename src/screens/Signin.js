@@ -52,7 +52,7 @@ const Signin = ({ navigation }) => {
             end: { x: 1, y: 0.5 },
           }}
           buttonStyle={{marginTop: 20,}}
-          onPress={() => navigation.navigate('Root')}
+          onPress={() => navigation.navigate('Home')}
         />
         <Button
           title="Sign In With Gmail"
