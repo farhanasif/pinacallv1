@@ -3,6 +3,8 @@ import { StyleSheet, Text, View,Image, TouchableOpacity, TextInput } from 'react
 import { Input, Button } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import { Entypo, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '../assets/utils/colors';
 
 const screen = Dimensions.get("screen");
 const WIDTH = screen.width;
@@ -17,24 +19,24 @@ const Signin = ({ navigation }) => {
       ></Image>
       <View style={{marginHorizontal: 10}}>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="mail" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="mail" size={24}/>
             <TextInput
                 style={styles.input}
                 placeholder="EMAIL"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="keyboard" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="keyboard" size={24}/>
             <TextInput
                 style={styles.input}
                 secureTextEntry={true}
                 placeholder="PASSWORD"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <Button
-          title="SIGN IN"
+          title="Sign In"
           icon={
             <FontAwesome
               name="sign-in"
@@ -43,11 +45,17 @@ const Signin = ({ navigation }) => {
               style={{marginRight: 10}}
             />
           }
-          buttonStyle={{marginTop: 20, backgroundColor:'#0F8943'}}
+          ViewComponent={LinearGradient}
+          linearGradientProps={{
+            colors: ['#E7412B','#F50B5E','#CF005F', '#9A0F3C'],
+            start: { x: 0, y: 0.5 },
+            end: { x: 1, y: 0.5 },
+          }}
+          buttonStyle={{marginTop: 20,}}
           onPress={() => navigation.navigate('Root')}
         />
         <Button
-          title="SIGN IN WITH GMAIL"
+          title="Sign In With Gmail"
           icon={
             <MaterialCommunityIcons
               name="gmail"
@@ -56,18 +64,24 @@ const Signin = ({ navigation }) => {
               style={{marginRight: 10}}
             />
           }
-          buttonStyle={{marginTop: 10, backgroundColor:'#DC4A3D'}}
+          ViewComponent={LinearGradient}
+          linearGradientProps={{
+            colors: ['#E7412B','#F50B5E','#CF005F', '#9A0F3C'],
+            start: { x: 0, y: 0.5 },
+            end: { x: 1, y: 0.5 },
+          }}
+          buttonStyle={{marginTop: 10, width: 200}}
         />
         <Button
           title="Create a new account"
           type="clear"
-          titleStyle={{ color: '#0F8943'}}
+          titleStyle={{ color: COLORS.pinacall_pink }}
           onPress={() => navigation.navigate('SignUp')}
         />
         <Button
           title="Forgot Password"
           type="clear"
-          titleStyle={{ color: '#0F8943'}}
+          titleStyle={{ color: COLORS.pinacall_pink }}
           onPress={() => navigation.navigate('ForgotPassword')}
         />
       </View>
@@ -78,7 +92,7 @@ const Signin = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.white,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -92,20 +106,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
   },
   searchIcon: {
       padding: 10,
-      color: '#0F8943',
+      color: COLORS.pinacall_pink,
   },
   input: {
       flex: 1,
       paddingTop: 10,
       paddingRight: 10,
       paddingBottom: 10,
-      paddingLeft: 0,
-      backgroundColor: '#fff',
-      color: '#424242',
+      paddingLeft: 3,
+      backgroundColor: COLORS.white,
+      color: COLORS.placeholder,
       fontSize: 15
   },
 });

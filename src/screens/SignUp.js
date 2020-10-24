@@ -3,6 +3,8 @@ import { StyleSheet, Text, View,Image, TouchableOpacity, TextInput } from 'react
 import { Input, Button } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import { Entypo, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '../assets/utils/colors';
 
 const screen = Dimensions.get("screen");
 const WIDTH = screen.width;
@@ -17,58 +19,48 @@ const SignUp = ({ navigation }) => {
       ></Image>
       <View style={{marginHorizontal: 10}}>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="user" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="user" size={24}/>
             <TextInput
                 style={styles.input}
                 placeholder="Your Name"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="mail" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="mail" size={24}/>
             <TextInput
                 style={styles.input}
                 placeholder="Email"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="keyboard" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="keyboard" size={24}/>
             <TextInput
                 style={styles.input}
                 placeholder="Password"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="keyboard" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="keyboard" size={24}/>
             <TextInput
                 style={styles.input}
                 placeholder="Confirm password"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="mobile" size={24} color="#000"/>
+            <Entypo style={styles.searchIcon} name="mobile" size={24}/>
             <TextInput
                 style={styles.input}
                 placeholder="Mobile"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
-        {/* <Input
-          leftIcon={{ type: 'ionicons', name: 'mail', color:'#1418C9' }}
-          leftIconContainerStyle={{marginRight: 5,}}
-          inputStyle={{borderBottomColor:'#1418C9'}}
-          placeholder='Email'
-        /> */}
-        {/* <Input
-          leftIcon={{ type: 'entypo', name: 'keyboard', color:'#1418C9' }}
-          leftIconContainerStyle={{marginRight: 5,}}
-          placeholder='Password'
-        /> */}
+
         <Button
-          title="CREATE ACCOUNT"
+          title="Create Account"
           icon={
             <FontAwesome
               name="check"
@@ -77,11 +69,16 @@ const SignUp = ({ navigation }) => {
               style={{marginRight: 10}}
             />
           }
-          buttonStyle={{marginTop: 20, backgroundColor:'#0F8943'}}
-          
+          buttonStyle={{marginTop: 20,}}
+          ViewComponent={LinearGradient}
+          linearGradientProps={{
+            colors: ['#E7412B','#F50B5E','#CF005F', '#9A0F3C'],
+            start: { x: 0, y: 0.5 },
+            end: { x: 1, y: 0.5 },
+          }}
         />
         <Button
-          title="USE GMAIL ACCOUNT"
+          title="Use Gamil Account"
           icon={
             <MaterialCommunityIcons
               name="gmail"
@@ -90,24 +87,18 @@ const SignUp = ({ navigation }) => {
               style={{marginRight: 10}}
             />
           }
-          buttonStyle={{marginTop: 10, backgroundColor:'#DC4A3D'}}
+          buttonStyle={{marginTop: 10,}}
+          ViewComponent={LinearGradient}
+          linearGradientProps={{
+            colors: ['#E7412B','#F50B5E','#CF005F', '#9A0F3C'],
+            start: { x: 0, y: 0.5 },
+            end: { x: 1, y: 0.5 },
+          }}
         />
-        {/* <Button
-          title="Sign Up with Facebook"
-          icon={
-            <FontAwesome
-              name="facebook"
-              size={15}
-              color="white"
-              style={{marginRight: 10}}
-            />
-          }
-          buttonStyle={{marginTop: 10, backgroundColor:'#4267B2'}}
-        /> */}
         <Button
-          title="LOGIN"
+          title="Already Have An Account? Login here"
           type="clear"
-          titleStyle={{ color: '#0F8943'}}
+          titleStyle={{ color: COLORS.pinacall_pink}}
           onPress={() => navigation.navigate('Signin')}
         />
       </View>
@@ -118,7 +109,7 @@ const SignUp = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.white,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -132,11 +123,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
   },
   searchIcon: {
       padding: 10,
-      color: '#0F8943',
+      color: COLORS.pinacall_pink,
   },
   input: {
       flex: 1,
@@ -144,8 +135,8 @@ const styles = StyleSheet.create({
       paddingRight: 10,
       paddingBottom: 10,
       paddingLeft: 0,
-      backgroundColor: '#fff',
-      color: '#424242',
+      backgroundColor: COLORS.white,
+      color: COLORS.placeholder,
       fontSize: 15
   },
 });

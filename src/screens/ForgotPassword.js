@@ -3,7 +3,8 @@ import { StyleSheet, Text, View,Image, TouchableOpacity, TextInput } from 'react
 import { Input, Button } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import { Entypo, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '../assets/utils/colors';
 
 const ForgotPassword = ({ navigation }) => {
   return (
@@ -13,14 +14,14 @@ const ForgotPassword = ({ navigation }) => {
         resizeMode="contain"
         style={styles.image}
       ></Image>
-      <Text style={{fontSize: 17, fontFamily: 'Roboto' , color: '#0F8943'}}>Forgot your password?</Text>
+      <Text style={{fontSize: 17, fontFamily: 'Roboto' , color: COLORS.pinacall_pink}}>Forgot your password?</Text>
       <View>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="mail" size={24} color="#0F8943"/>
+            <Entypo style={styles.searchIcon} name="mail" size={24} color={COLORS.pinacall_pink}/>
             <TextInput
                 style={styles.input}
                 placeholder="Enter your gmail"
-                underlineColorAndroid="#0F8943"
+                underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>
         <Button
@@ -33,12 +34,18 @@ const ForgotPassword = ({ navigation }) => {
               style={{marginRight: 10}}
             />
           }
-          buttonStyle={{marginTop: 20, backgroundColor:'#0F8943'}}
+          buttonStyle={{marginTop: 20}}
+          ViewComponent={LinearGradient}
+          linearGradientProps={{
+            colors: ['#E7412B','#F50B5E','#CF005F', '#9A0F3C'],
+            start: { x: 0, y: 0.5 },
+            end: { x: 1, y: 0.5 },
+          }}
         />
         <Button
           title="Login here..."
           type="clear"
-          titleStyle={{ color: '#0F8943'}}
+          titleStyle={{ color: COLORS.pinacall_pink}}
           onPress={() => navigation.navigate('Signin')}
           buttonStyle={{minWidth:200}}
         />
@@ -50,7 +57,7 @@ const ForgotPassword = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -64,11 +71,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
   },
   searchIcon: {
       padding: 10,
-      color: '#0F8943',
+      color: COLORS.pinacall_pink,
   },
   input: {
       flex: 1,
@@ -76,8 +83,8 @@ const styles = StyleSheet.create({
       paddingRight: 10,
       paddingBottom: 10,
       paddingLeft: 0,
-      backgroundColor: '#fff',
-      color: '#424242',
+      backgroundColor: COLORS.white,
+      color: COLORS.placeholder,
       fontSize: 15,
       minWidth: 200
   },
