@@ -4,6 +4,7 @@ export const routes = [
     'About',
     'Services',
     'Contact',
+    'Signin'
   ];
   export const links = ['Follow us', 'About', 'Website'];
   export const colors = [

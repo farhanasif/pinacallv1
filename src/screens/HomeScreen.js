@@ -30,7 +30,7 @@ const Button = ({ title, onPress, style }) => {
   );
 };
 
-const Drawer = ({ animation, onPress }) => {
+const Drawer = ({ animation, onPress, navigation }) => {
   const polygonRef = React.useRef();
 
   React.useEffect(() => {
@@ -61,6 +61,7 @@ const Drawer = ({ animation, onPress }) => {
 
   const onRoutePress = React.useCallback((route) => {
     setSelectedRoute(route);
+    if(route == 'Signin') navigation.navigate('Signin')
     onPress(route);
     console.log(route);
   }, []);
@@ -147,7 +148,7 @@ const Drawer = ({ animation, onPress }) => {
   );
 }
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const animation = React.useRef(new Animated.ValueXY(fromCoords)).current;
   const [selectedRoute, setSelectedRoute] = React.useState('Get started');
   const [content, setContent] = React.useState(true);
@@ -178,7 +179,7 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Drawer animation={animation} onPress={onCloseDrawer} />
+      <Drawer animation={animation} onPress={onCloseDrawer} navigation={navigation}/>
       <StatusBar backgroundColor="white"/>
       <AnimatedAntDesign
         onPress={onOpenDrawer}
@@ -192,6 +193,7 @@ export default function HomeScreen() {
           <Text style={{fontSize: 27, color: COLORS.placeholder}}>{selectedRoute}</Text>
         </View>) : <View></View>
       }
+      
       
     </View>
   );
