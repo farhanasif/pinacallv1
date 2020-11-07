@@ -3,7 +3,7 @@ import { View, Text, Button, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { COLORS } from '../assets/utils/colors';
 
-export default function HomeScreen({navigation}) {
+export default function QueryScreen({navigation}) {
   
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -15,15 +15,12 @@ export default function HomeScreen({navigation}) {
           <FontAwesome name="bars" size={23} color={COLORS.pinacall_pink} />
         </TouchableOpacity>
       ),
-      headerLeft: null
     });
   }, [navigation]);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button onPress={() => navigation.navigate('Query')}   title="Learn More"
-      color="#841584" />
+      <Text>Query Screen</Text>
     </View>
   );
 }
