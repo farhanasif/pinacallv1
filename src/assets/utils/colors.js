@@ -7,4 +7,5 @@ export const COLORS = {
     pinacall_orange: '#E7412B',
     pinacall_middle: '#F50B5E',
     placeholder: '#424242',
+    orange2: '#828e69',
 }

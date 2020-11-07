@@ -142,7 +142,7 @@ export function DrawerContent(props) {
                         )}
                         label="Sign Out"
                         labelStyle={{color: '#FFF', fontWeight: '700'}}
-                        onPress={() => console.log('here')}
+                        onPress={() => {props.navigation.navigate('Signin')}}
                     />
                 </Drawer.Section>
             </LinearGradient>
