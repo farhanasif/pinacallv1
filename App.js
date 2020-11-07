@@ -19,8 +19,8 @@ const Drawer = createDrawerNavigator();
 function rootDrawer(){
   return(
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} screenOptions={{headerShown: false,}}>
-      <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Pinacall' }}/>
-      <Drawer.Screen name="Query" component={QueryScreen} options={{ title: 'General Query' }}/>
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Query" component={QueryScreen} />
     </Drawer.Navigator>
   )
 }
@@ -34,7 +34,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Signin" >
         <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false,}}/>
-        <Stack.Screen name="Root" component={rootDrawer} />
+        <Stack.Screen name="Root" component={rootDrawer} options={{headerShown: false,}}/>
         <Stack.Screen name="Signin" component={Signin} options={{headerShown: false,}}/>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       </Stack.Navigator>
