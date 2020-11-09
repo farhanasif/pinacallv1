@@ -19,10 +19,10 @@ const Signin = ({ navigation }) => {
       ></Image>
       <View style={{marginHorizontal: 10}}>
         <View style={styles.searchSection}>
-            <Entypo style={styles.searchIcon} name="mail" size={24}/>
+            <Entypo style={styles.searchIcon} name="mobile" size={24}/>
             <TextInput
                 style={styles.input}
-                placeholder="EMAIL"
+                placeholder="MOBILE"
                 underlineColorAndroid={COLORS.pinacall_pink}
             />
         </View>

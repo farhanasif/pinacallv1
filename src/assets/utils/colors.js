@@ -8,4 +8,6 @@ export const COLORS = {
     pinacall_middle: '#F50B5E',
     placeholder: '#424242',
     orange2: '#828e69',
+    whiteback: '#F6F9FC',
+    
 }
