@@ -5,6 +5,7 @@ import { Appbar } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 import { FontAwesome5, MaterialCommunityIcons }  from '@expo/vector-icons';
+import MySVGImage from '../assets/images/undraw_Select_re_3kbd.svg';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -63,8 +64,8 @@ export default function HomeScreen({navigation}) {
           <Text style={{ fontSize: 22, fontWeight: '700'}}>DISCOVER PINACALL</Text>
           <Text style={{ fontWeight: '300', color: '#414141'}}>What you are looking for.</Text>
         </View>
-        <View>
-          
+        <View style={{ alignItems: 'flex-end', paddingLeft: 20, paddingTop: 20}}>
+          <MySVGImage width={120} height={120}/>
         </View>
       </View>
     </View>
