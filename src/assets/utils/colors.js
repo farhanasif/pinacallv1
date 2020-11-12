@@ -9,5 +9,6 @@ export const COLORS = {
     placeholder: '#424242',
     orange2: '#828e69',
     whiteback: '#F6F9FC',
+    blue: '#3c3b75',
     
 }

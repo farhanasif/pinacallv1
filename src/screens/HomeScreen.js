@@ -21,12 +21,12 @@ export default function HomeScreen({navigation}) {
   const handleAnimation = () => {
     Animated.timing(animation, {
       toValue:1,
-      duration: 4000,
+      duration: 1000,
       useNativeDriver: false,
     }).start( () => {
       Animated.timing(animation,{
         toValue:0,
-        duration: 4000,
+        duration: 1000,
         useNativeDriver: false,
       }).start()
     })
@@ -60,10 +60,10 @@ export default function HomeScreen({navigation}) {
           <Text style={{ fontSize: 22, fontWeight: '700'}}>Welcome Farhan,</Text>
           <Text style={{ fontWeight: '300', color: '#414141'}}>Choose the type of service you are interested</Text>
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 30}}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 12}}>
           <Animated.View style={{...styles.box, ...animatedStyle}} >
             <MaterialCommunityIcons name="phone" size={55} color="white" />
-            <Text style={{marginTop: 40, fontSize: 16, fontWeight: '700', color: '#FFF'}}>PIN A CALL</Text>
+            <Text style={{marginTop: 40, fontSize: 14, fontWeight: '700', color: '#FFF'}}>PIN A CALL</Text>
           </Animated.View>
           <View style={{
             borderColor: COLORS.pinacall_middle,
@@ -81,11 +81,10 @@ export default function HomeScreen({navigation}) {
             },
             shadowOpacity: 0.34,
             shadowRadius: 6.27,
-
             elevation: 10,
           }}>
-            <FontAwesome5 name="user-cog" size={55} color="white" />
-            <Text style={{marginTop: 40, fontSize: 16, fontWeight: '700', color: '#FFF'}}>MY ACCOUNT</Text>
+            <FontAwesome5 name="shopping-bag" size={55} color="white" />
+            <Text style={{marginTop: 40, fontSize: 14, fontWeight: '700', color: '#FFF'}}>WINDOW SHOPPING</Text>
           </View>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 30}}>
@@ -108,8 +107,8 @@ export default function HomeScreen({navigation}) {
 
             elevation: 10,
           }}>
-            <MaterialCommunityIcons name="file-document-outline" size={55} color="white" />
-            <Text style={{marginTop: 40, fontSize: 16, fontWeight: '700', color: '#FFF'}}>HISTORY</Text>
+            <FontAwesome5 name="hotel" size={55} color="white" />
+            <Text style={{marginTop: 40, fontSize: 14, fontWeight: '700', color: '#FFF'}}>HOTEL BOOKING</Text>
           </View>
           <View style={{
             borderColor: COLORS.pinacall_pink,
@@ -130,9 +129,34 @@ export default function HomeScreen({navigation}) {
 
             elevation: 10,
           }}>
-          <FontAwesome5 name="money-check" size={55} color="white" />
-            <Text style={{marginTop: 40, fontSize: 16, fontWeight: '700', color: '#FFF'}}>MY BILLING</Text>
+            <MaterialCommunityIcons name="account-box-outline" size={55} color="white" />
+            <Text style={{marginTop: 40, fontSize: 14, fontWeight: '700', color: '#FFF'}}>EXPERT ADVISE</Text>
           </View>
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-start', paddingTop: 30, paddingLeft: 18}}>
+          <View style={{
+            borderColor: COLORS.blue,
+            borderWidth: 3,
+            width: windowWidth/2 - 30,
+            borderRadius: 10,
+            height: 170,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: COLORS.blue,
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.34,
+            shadowRadius: 6.27,
+
+            elevation: 10,
+          }}>
+            <MaterialCommunityIcons name="eye" size={55} color="white" />
+            <Text style={{marginTop: 40, fontSize: 14, fontWeight: '700', color: '#FFF'}}>3RD EYE</Text>
+          </View>
+          
         </View>
       </View>
       
