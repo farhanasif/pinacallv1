@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
-import { FontAwesome5, MaterialCommunityIcons }  from '@expo/vector-icons';
+import { FontAwesome5 }  from '@expo/vector-icons';
 import { COLORS } from '../../assets/utils/colors';
 
 const windowWidth = Dimensions.get('window').width;
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: windowWidth/4 - 10,
         borderRadius: 10,
-        height: 70,
+        height: 68,
         alignItems: 'center',
         justifyContent: 'center',
     },
