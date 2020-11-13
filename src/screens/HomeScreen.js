@@ -1,13 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { COLORS } from '../assets/utils/colors';
-import { Dimensions } from 'react-native';
-import { FontAwesome5, MaterialCommunityIcons }  from '@expo/vector-icons';
+import { View, StyleSheet, Image } from 'react-native';
 import MySVGImage from '../assets/images/undraw_Select_re_3kbd.svg';
-const windowWidth = Dimensions.get('window').width;
 
 import Title from '../components/HomeScreen/Title';
+import Button from '../components/HomeScreen/Button';
 
+const MySVGSize = 160;
 
 export default function HomeScreen({navigation}) {
   return (
@@ -23,47 +21,19 @@ export default function HomeScreen({navigation}) {
           <Title headerText="Welcome Farhan," description="Choose the type of service you are interested in"/>
           <Title headerText="DISCOVER PINACALL" description="What you are looking for?"/>
           <View style={styles.row}>
-          <View style={{paddingRight: 5}}>
-            <View style={styles.box}>
-                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
-                <Text style={styles.buttonText}>Pin a Call</Text>
-              </View>
-            </View>
-            <View style={{paddingRight: 5}}>
-              <View style={styles.box}>
-                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right}  />
-                <Text style={styles.buttonText}>Window Shopping</Text>
-              </View>
-            </View>
-            <View style={{paddingRight: 5}}>
-              <View style={styles.box}>
-                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
-                <Text style={styles.buttonText}>Hotel Booking</Text>
-              </View>
-            </View>
-            <View style={styles.box}>
-              <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
-              <Text style={styles.buttonText}>Expert Advise</Text>
-            </View>
+            <Button iconName="phone" buttonTitle="Pin a Call" />
+            <Button iconName="shopping-bag" buttonTitle="Window Shopping" />
+            <Button iconName="hotel" buttonTitle="Hotel Booking" />
+            <Button iconName="user-shield" buttonTitle="Expert Advise" />
           </View>
           <View style={styles.row}>
-            <View style={{paddingRight: 5}}>
-              <View style={styles.box}>
-                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right}  />
-                <Text style={styles.buttonText}>3rd Eye</Text>
-              </View>
-            </View>
-            <View style={{paddingRight: 5}}>
-              <View style={styles.box}>
-                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
-                <Text style={styles.buttonText}>SOS</Text>
-              </View>
-            </View>
+            <Button iconName="eye" buttonTitle="3rd Eye" />
+            <Button iconName="hands-helping" buttonTitle="SOS" />
           </View>
         </View>
       </View>
       <View style={{ position : 'absolute', bottom: 0, right: 0}}>
-        <MySVGImage width={110} height={110}/>
+        <MySVGImage width={MySVGSize} height={MySVGSize}/>
       </View>
     </View>
   );
@@ -74,26 +44,11 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     alignItems: 'center',
     justifyContent: 'center'
-  },  
-  box: {
-    borderColor: COLORS.border,
-    borderWidth: 1,
-    width: windowWidth/4 - 10,
-    borderRadius: 10,
-    height: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  }, 
   row: { 
     flexDirection: 'row', 
     alignItems: 'flex-start',
     paddingTop: 20,
     paddingHorizontal: 10
   },
-  buttonText: {
-    marginTop: 4, 
-    fontSize: 10, 
-    fontWeight: '700', 
-    color: '#000'
-  }
 });
