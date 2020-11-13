@@ -1,13 +1,20 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import MySVGImage from '../assets/images/undraw_Select_re_3kbd.svg';
+import Menu from '../assets/images/menu.svg';
 
 import Title from '../components/HomeScreen/Title';
 import Button from '../components/HomeScreen/Button';
 
 const MySVGSize = 160;
+const MenuSize = 24;
 
 export default function HomeScreen({navigation}) {
+  
+  const _onMenuPress = () => {
+    navigation.openDrawer();
+  }
+
   return (
     <View style={{flex:1}}>
       <View style={{ flex: 1,}}>
@@ -34,6 +41,14 @@ export default function HomeScreen({navigation}) {
       </View>
       <View style={{ position : 'absolute', bottom: 0, right: 0}}>
         <MySVGImage width={MySVGSize} height={MySVGSize}/>
+      </View>
+      <View style={{ position : 'absolute', top: 48, right: -40,}}>
+        <TouchableOpacity
+          onPress={_onMenuPress}
+        >
+          <Menu width={MySVGSize} height={MenuSize}/>
+        </TouchableOpacity>
+        
       </View>
     </View>
   );

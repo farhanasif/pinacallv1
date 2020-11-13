@@ -1,44 +1,25 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { FontAwesome } from '@expo/vector-icons';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import Route from './Route';
+import { COLORS } from './src/assets/utils/colors';
 
-
-import Signin from './src/screens/Signin';
-import SignUp from './src/screens/SignUp';
-import ForgotPassword from './src/screens/ForgotPassword';
-import HomeScreen from './src/screens/HomeScreen';
-import QueryScreen from './src/screens/QueryScreen';
-
-import { DrawerContent } from './src/components/DrawerContent';
-
-const Drawer = createDrawerNavigator();
-
-function rootDrawer(){
-  return(
-    <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} screenOptions={{headerShown: false,}}>
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Query" component={QueryScreen} />
-    </Drawer.Navigator>
-  )
-}
-
-
-const Stack = createStackNavigator();
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: COLORS.pinacall_middle_pink,
+    accent: '#f1c40f',
+  },
+};
 
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Signin" >
-        <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false,}}/>
-        <Stack.Screen name="Root" component={rootDrawer} options={{headerShown: false,}}/>
-        <Stack.Screen name="Signin" component={Signin} options={{headerShown: false,}}/>
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PaperProvider theme={theme}>
+      <Route />
+    </PaperProvider>
+    
   );
 }
 

@@ -16,28 +16,22 @@ import {
     DrawerItem
 } from '@react-navigation/drawer';
 
-//import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MaterialCommunityIcons as Icon }  from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
-
-import{ AuthContext } from './context';
+import { COLORS } from '../assets/utils/colors';
 
 export function DrawerContent(props) {
 
     const paperTheme = useTheme();
 
-    //const { signOut, toggleTheme } = React.useContext(AuthContext);
-
     return(
-        <LinearGradient colors={['#E7412B','#F50B5E', '#CF005F', '#9A0F3C']} start={[0.0, 0.5]} end={[1.0, 0.5]} style={{flex:1}}>
-            
+            <View style={{ flex: 1 }}>
                 <DrawerContentScrollView {...props}>
                     <View style={styles.drawerContent}>
                         <View style={styles.userInfoSection}>
                             <View style={{flexDirection:'row',marginTop: 15}}>
                                 <Avatar.Image 
-                                    source={require('../assets/images/villager-icon.png')}
-                                    size={50}
+                                    source={require('../assets/images/male.png')}
+                                    size={64}
                                 />
                                 <View style={{marginLeft:15, flexDirection:'column'}}>
                                     <Title style={styles.title}>Farhan Asif</Title>
@@ -62,67 +56,67 @@ export function DrawerContent(props) {
                                 icon={({color, size}) => (
                                     <Icon 
                                     name="home-outline" 
-                                    color="#FFF"
+                                    color={COLORS.placeholder}
                                     size={size}
                                     />
                                 )}
                                 label="Home"
-                                labelStyle={{color: '#FFF', fontWeight: '700'}}
+                                labelStyle={{color: COLORS.placeholder, fontWeight: '700'}}
                                 onPress={() => {props.navigation.navigate('Home')}}
                             />
                             <DrawerItem 
                                 icon={({color, size}) => (
                                     <Icon 
                                     name="account-outline" 
-                                    color="#FFF"
+                                    color={COLORS.placeholder}
                                     size={size}
                                     />
                                 )}
                                 label="Profile"
-                                labelStyle={{color: '#FFF', fontWeight: '700'}}
+                                labelStyle={{color: COLORS.placeholder, fontWeight: '700'}}
                                 onPress={() => {props.navigation.navigate('Query')}}
                             />
                             <DrawerItem 
                                 icon={({color, size}) => (
                                     <Icon 
-                                    name="bookmark-outline" 
-                                    color="#FFF"
+                                    name="account-card-details-outline" 
+                                    color={COLORS.placeholder}
                                     size={size}
                                     />
                                 )}
-                                label="General Query"
-                                labelStyle={{color: '#FFF', fontWeight: '700'}}
+                                label="My Billing"
+                                labelStyle={{color: COLORS.placeholder, fontWeight: '700'}}
                                 onPress={() => {props.navigation.navigate('Query')}}
                             />
                             <DrawerItem 
                                 icon={({color, size}) => (
                                     <Icon 
                                     name="settings-outline" 
-                                    color="#FFF"
+                                    color={COLORS.placeholder}
                                     size={size}
                                     />
                                 )}
                                 label="Settings"
-                                labelStyle={{color: '#FFF', fontWeight: '700'}}
+                                labelStyle={{color: COLORS.placeholder, fontWeight: '700'}}
                                 onPress={() => {props.navigation.navigate('Query')}}
                             />
                             <DrawerItem 
                                 icon={({color, size}) => (
                                     <Icon 
                                     name="account-check-outline" 
-                                    color="#FFF"
+                                    color={COLORS.placeholder}
                                     size={size}
                                     />
                                 )}
                                 label="Support"
-                                labelStyle={{color: '#FFF', fontWeight: '700'}}
+                                labelStyle={{color: COLORS.placeholder, fontWeight: '700'}}
                                 onPress={() => {props.navigation.navigate('Query')}}
                             />
                         </Drawer.Section>
-                        <Drawer.Section title="Preferences" style={{color: '#FFF'}}>
+                        <Drawer.Section title="Preferences" style={{color: COLORS.placeholder}}>
                             <TouchableRipple onPress={() => {toggleTheme()}}>
                                 <View style={styles.preference}>
-                                    <Text style={{color: '#FFF', fontWeight: '700'}}>Host mode</Text>
+                                    <Text style={{color: COLORS.placeholder, fontWeight: '700'}}>Host mode</Text>
                                     <View pointerEvents="none">
                                         <Switch value={paperTheme.dark}/>
                                     </View>
@@ -136,17 +130,16 @@ export function DrawerContent(props) {
                         icon={({color, size}) => (
                             <Icon 
                             name="exit-to-app" 
-                            color="#FFF"
+                            color={COLORS.placeholder}
                             size={size}
                             />
                         )}
                         label="Sign Out"
-                        labelStyle={{color: '#FFF', fontWeight: '700'}}
+                        labelStyle={{color: COLORS.placeholder, fontWeight: '700'}}
                         onPress={() => {props.navigation.navigate('Signin')}}
                     />
                 </Drawer.Section>
-            </LinearGradient>
-        //</View>
+        </View>
     );
 }
 
@@ -161,12 +154,12 @@ const styles = StyleSheet.create({
       fontSize: 16,
       marginTop: 3,
       fontWeight: 'bold',
-      color: '#FFF'
+      color: COLORS.placeholder
     },
     caption: {
       fontSize: 14,
       lineHeight: 14,
-      color: '#FFF'
+      color: COLORS.placeholder
     },
     row: {
       marginTop: 20,
