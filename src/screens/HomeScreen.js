@@ -1,72 +1,69 @@
-import React, {useState, useEffect} from 'react';
-import { View, Text, Button, TouchableOpacity, Animated, StyleSheet, Image } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { COLORS } from '../assets/utils/colors';
-import { Appbar } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 import { FontAwesome5, MaterialCommunityIcons }  from '@expo/vector-icons';
 import MySVGImage from '../assets/images/undraw_Select_re_3kbd.svg';
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+
+import Title from '../components/HomeScreen/Title';
 
 
 export default function HomeScreen({navigation}) {
-  const _goBack = () => console.log('Went back');
-
-  const _handleSearch = () => console.log('Searching');
-
-  const _handleMore = () => navigation.openDrawer();
-  const [animation, setAnimation] = useState(new Animated.Value(0));
-
-
-  const handleAnimation = () => {
-    Animated.timing(animation, {
-      toValue:1,
-      duration: 1000,
-      useNativeDriver: false,
-    }).start( () => {
-      Animated.timing(animation,{
-        toValue:0,
-        duration: 1000,
-        useNativeDriver: false,
-      }).start()
-    })
-  }
-
-  const boxInterpolation =  animation.interpolate({
-    inputRange: [0, 1],
-    outputRange:[COLORS.pinacall_middle , COLORS.pinacall_pink]
-  })
-  
-  const animatedStyle = {
-    backgroundColor: boxInterpolation
-  }
-
-  useEffect(() => {    
-    handleAnimation()
-  });
-
   return (
-    <View style={{ flex: 1,}}>
-      <View style={styles.header}>
-        <Image
-          style={{height: 140, width: 140}}
-          source={require('../assets/images/pinacall_final_01.png')}
-        />
+    <View style={{flex:1}}>
+      <View style={{ flex: 1,}}>
+        <View style={styles.header}>
+          <Image
+            style={{height: 140, width: 140}}
+            source={require('../assets/images/pinacall_final_01.png')}
+          />
+        </View>
+        <View>
+          <Title headerText="Welcome Farhan," description="Choose the type of service you are interested in"/>
+          <Title headerText="DISCOVER PINACALL" description="What you are looking for?"/>
+          <View style={styles.row}>
+          <View style={{paddingRight: 5}}>
+            <View style={styles.box}>
+                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
+                <Text style={styles.buttonText}>Pin a Call</Text>
+              </View>
+            </View>
+            <View style={{paddingRight: 5}}>
+              <View style={styles.box}>
+                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right}  />
+                <Text style={styles.buttonText}>Window Shopping</Text>
+              </View>
+            </View>
+            <View style={{paddingRight: 5}}>
+              <View style={styles.box}>
+                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
+                <Text style={styles.buttonText}>Hotel Booking</Text>
+              </View>
+            </View>
+            <View style={styles.box}>
+              <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
+              <Text style={styles.buttonText}>Expert Advise</Text>
+            </View>
+          </View>
+          <View style={styles.row}>
+            <View style={{paddingRight: 5}}>
+              <View style={styles.box}>
+                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right}  />
+                <Text style={styles.buttonText}>3rd Eye</Text>
+              </View>
+            </View>
+            <View style={{paddingRight: 5}}>
+              <View style={styles.box}>
+                <FontAwesome5 name="hotel" size={20} color={COLORS.pinacall_pink_right} />
+                <Text style={styles.buttonText}>SOS</Text>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
-      
-      <View>
-        <View style={{ alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
-          <Text style={{ fontSize: 22, fontWeight: '700'}}>Welcome Farhan,</Text>
-          <Text style={{ fontWeight: '300', color: '#414141'}}>Choose the type of service you are interested</Text>
-        </View>
-        <View style={{ alignItems: 'flex-start', paddingLeft: 20, paddingTop: 20 }}>
-          <Text style={{ fontSize: 22, fontWeight: '700'}}>DISCOVER PINACALL</Text>
-          <Text style={{ fontWeight: '300', color: '#414141'}}>What you are looking for.</Text>
-        </View>
-        <View style={{ alignItems: 'flex-end', paddingLeft: 20, paddingTop: 20}}>
-          <MySVGImage width={120} height={120}/>
-        </View>
+      <View style={{ position : 'absolute', bottom: 0, right: 0}}>
+        <MySVGImage width={110} height={110}/>
       </View>
     </View>
   );
@@ -79,21 +76,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },  
   box: {
-    borderWidth: 0,
-    width: windowWidth/2 - 30,
+    borderColor: COLORS.border,
+    borderWidth: 1,
+    width: windowWidth/4 - 10,
     borderRadius: 10,
-    height: 170,
+    height: 70,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.pinacall_middle,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-
-    elevation: 10,
+  },
+  row: { 
+    flexDirection: 'row', 
+    alignItems: 'flex-start',
+    paddingTop: 20,
+    paddingHorizontal: 10
+  },
+  buttonText: {
+    marginTop: 4, 
+    fontSize: 10, 
+    fontWeight: '700', 
+    color: '#000'
   }
 });

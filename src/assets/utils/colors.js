@@ -10,5 +10,6 @@ export const COLORS = {
     orange2: '#828e69',
     whiteback: '#F6F9FC',
     blue: '#3c3b75',
+    border: '#85929e',
     
 }
