@@ -11,6 +11,7 @@ import SignUp from './src/screens/SignUp';
 import ForgotPassword from './src/screens/ForgotPassword';
 import HomeScreen from './src/screens/HomeScreen';
 import QueryScreen from './src/screens/QueryScreen';
+import MapScreen from './src/screens/MapScreen';
 
 import { DrawerContent } from './src/components/DrawerContent';
 
@@ -21,6 +22,7 @@ function rootDrawer(){
     <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />} screenOptions={{headerShown: false,}}>
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Query" component={QueryScreen} />
+      <Drawer.Screen name="Map" component={MapScreen} />
     </Drawer.Navigator>
   )
 }

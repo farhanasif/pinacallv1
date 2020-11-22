@@ -28,14 +28,14 @@ export default function HomeScreen({navigation}) {
           <Title headerText="Welcome Farhan," description="Choose the type of service you are interested in"/>
           <Title headerText="DISCOVER PINACALL" description="What you are looking for?"/>
           <View style={styles.row}>
-            <Button iconName="phone" buttonTitle="Pin a Call" />
-            <Button iconName="shopping-bag" buttonTitle="Window Shopping" />
-            <Button iconName="hotel" buttonTitle="Hotel Booking" />
-            <Button iconName="user-shield" buttonTitle="Expert Advise" />
+            <Button iconName="phone" buttonTitle="Pin a Call" navigation={navigation}/>
+            <Button iconName="shopping-bag" buttonTitle="Window Shopping" navigation={navigation}/>
+            <Button iconName="hotel" buttonTitle="Hotel Booking" navigation={navigation}/>
+            <Button iconName="user-shield" buttonTitle="Expert Advise" navigation={navigation}/>
           </View>
           <View style={styles.row}>
-            <Button iconName="eye" buttonTitle="3rd Eye" />
-            <Button iconName="hands-helping" buttonTitle="SOS" />
+            <Button iconName="eye" buttonTitle="3rd Eye" navigation={navigation}/>
+            <Button iconName="hands-helping" buttonTitle="SOS" navigation={navigation}/>
           </View>
         </View>
       </View>

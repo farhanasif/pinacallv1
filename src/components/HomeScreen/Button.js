@@ -1,19 +1,24 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from "react-native";
 import { FontAwesome5 }  from '@expo/vector-icons';
 import { COLORS } from '../../assets/utils/colors';
 
 const windowWidth = Dimensions.get('window').width;
 
 function Button(props) {
-    const { iconName, buttonTitle } = props;
+    const { iconName, buttonTitle, navigation } = props;
   return (
-    <View style={styles.container}>
-        <View style={styles.box}>
-        <FontAwesome5 name={iconName} size={20} color={COLORS.pinacall_pink_right} />
-        <Text style={styles.buttonText}>{buttonTitle}</Text>
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('Map');
+      }}>
+          <View style={styles.container}>
+            <View style={styles.box}>
+            <FontAwesome5 name={iconName} size={20} color={COLORS.pinacall_pink_right} />
+            <Text style={styles.buttonText}>{buttonTitle}</Text>
+            </View>
         </View>
-    </View>
+      </TouchableOpacity>
+    
   );
 }
 
