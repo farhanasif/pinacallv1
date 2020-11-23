@@ -73,7 +73,7 @@ export default function MapScreen () {
           longitudeDelta: 0.00421*1.5
       }
 
-      setRegion(region);;p-00
+      setRegion(region);
 
     }
 
