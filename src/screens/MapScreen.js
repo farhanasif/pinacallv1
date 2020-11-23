@@ -7,6 +7,35 @@ import * as Location from 'expo-location';
 export default function MapScreen () {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [region, setRegion] = useState(null);
+
+  const _fetchData = async(position) => {
+    try {
+        let response = await fetch(
+            'https://api.joindoer.com/testing/offermama.php',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    action: 'getNearByRange'
+                }),
+            }
+        );
+
+        let responseJson = await response.json();
+        console.log(responseJson);
+        //setNearbyofferslist(responseJson);
+        
+    } 
+    catch (error) {
+        alert('An error occured during api data fetch: '+error);
+    }
+}
+
 
   useEffect(() => {
     (async () => {
@@ -15,35 +44,52 @@ export default function MapScreen () {
         setErrorMsg('Permission to access location was denied');
       }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
+        let location = await Location.getCurrentPositionAsync({});
+        //console.log(location);
+        setLocation(location);
+        setRegion({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        });
+      })();
+    }, []);
 
-  let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-    console.log(location)
-  }
+    let text = 'Waiting..';
+    if (errorMsg) {
+      text = errorMsg;
+    } else if (location) {
+      text = JSON.stringify(location);
+      console.log(location)
+    }
+
+    const _onPress = (e) => {
+      console.log(e.nativeEvent.coordinate);
+      let region = {
+          latitude:       e.nativeEvent.coordinate.latitude,
+          longitude:      e.nativeEvent.coordinate.longitude,
+          latitudeDelta:  0.00922*1.5,
+          longitudeDelta: 0.00421*1.5
+      }
+
+      setRegion(region);;p-00
+
+    }
 
     return (
       <View style={styles.container}>
         { location ? (
           <MapView 
               style={styles.mapStyle}
-              region={{
-                  latitude: location.coords.latitude,
-                  longitude: location.coords.longitude,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
-                }}
+              region={region}
+              followUserLocation={true}
+              onPress={(e) => _onPress(e)}
           >
               <MapView.Marker
                 coordinate={{
-                  latitude: location.coords.latitude,
-                  longitude: location.coords.longitude,
+                  latitude: region.latitude,
+                  longitude: region.longitude,
                 }}
                 title="My Location"
               />
