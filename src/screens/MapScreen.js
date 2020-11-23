@@ -1,26 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import MapView from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
 import * as Location from 'expo-location';
+import pin_green from '../assets/images/pin-green-icon.png';
+import pin_red from '../assets/images/pin-red-icon.png';
 
 
 export default function MapScreen () {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [region, setRegion] = useState(null);
+  const [nearby, setNearbyofferslist] = useState(null);
 
-  const _fetchData = async(position) => {
+  const _fetchData = async() => {
     try {
         let response = await fetch(
-            'https://api.joindoer.com/testing/offermama.php',
+            'http://103.108.144.246/pinacallapi/process.php',
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
+                    latitude: region.latitude,
+                    longitude: region.longitude,
                     action: 'getNearByRange'
                 }),
             }
@@ -28,7 +31,7 @@ export default function MapScreen () {
 
         let responseJson = await response.json();
         console.log(responseJson);
-        //setNearbyofferslist(responseJson);
+        setNearbyofferslist(responseJson);
         
     } 
     catch (error) {
@@ -39,10 +42,10 @@ export default function MapScreen () {
 
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-      }
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+        }
 
         let location = await Location.getCurrentPositionAsync({});
         //console.log(location);
@@ -77,35 +80,61 @@ export default function MapScreen () {
 
     }
 
+    const _checkNearByData = async() =>{
+      alert(region.longitude);
+      if(region){
+        await _fetchData();
+      }
+    }
+
     return (
       <View style={styles.container}>
-        { location ? (
+        { region ? (
           <MapView 
               style={styles.mapStyle}
               region={region}
               followUserLocation={true}
               onPress={(e) => _onPress(e)}
           >
-              <MapView.Marker
-                coordinate={{
-                  latitude: region.latitude,
-                  longitude: region.longitude,
-                }}
-                title="My Location"
+            <MapView.Marker
+              coordinate={{
+                latitude: region.latitude,
+                longitude: region.longitude,
+              }}
+            >
+              <Image
+                  source={require('../assets/images/pin-red-icon.png')}
+                  style={{ width: 28, height: 28 }}
               />
+            </MapView.Marker>
+            {nearby ? nearby.map((marker, index) => (
+                <MapView.Marker 
+                    coordinate={{
+                    latitude: parseFloat(marker.latitude),
+                    longitude: parseFloat(marker.longitude),
+                }}
+                key={index}
+                >
+                  <Image
+                    source={require('../assets/images/pin-green-icon.png')}
+                    style={{ width: 28, height: 28 }}
+                  />
+                </MapView.Marker>
+            )) : <View></View>
+          }
           </MapView>
         ): <View></View>}
         
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            onPress={() => console.log('pressed')}
+            onPress={() => _checkNearByData()}
             style={styles.button}>
-            <Text style={styles.buttonItem}>Call</Text>
+            <Text style={styles.buttonItem}>SEARCH</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => console.log('pressed')}
             style={styles.button}>
-            <Text style={styles.buttonItem}>Video Call</Text>
+            <Text style={styles.buttonItem}>CALL</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -128,19 +157,23 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     backgroundColor: 'transparent',
     alignItems: 'center',
+    justifyContent: 'space-around',
   },
 
   button: {
     width: 150,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255,235,255,0.7)',
+    justifyContent: 'space-around',
+    backgroundColor: 'rgba(246,12,93,0.7)',
     paddingHorizontal: 18,
     paddingVertical: 12,
     borderRadius: 20,
+
   },
 
   buttonItem: {
     textAlign: 'center',
+    fontWeight: '700',
+    color: 'white'
   },
 });
