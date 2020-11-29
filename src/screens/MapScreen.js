@@ -31,6 +31,9 @@ export default function MapScreen () {
 
         let responseJson = await response.json();
         console.log(responseJson);
+        if(responseJson.length < 1){
+          alert('No nearby host found')
+        }
         setNearbyofferslist(responseJson);
         
     } 
@@ -77,12 +80,13 @@ export default function MapScreen () {
       }
 
       setRegion(region);
-
+      
     }
 
     const _checkNearByData = async() =>{
-      alert(region.longitude);
+      
       if(region){
+        console.log('check nearby data');
         await _fetchData();
       }
     }
@@ -103,7 +107,7 @@ export default function MapScreen () {
               }}
             >
               <Image
-                  source={require('../assets/images/pin-red-icon.png')}
+                  source={require('../assets/images/user-icon.png')}
                   style={{ width: 28, height: 28 }}
               />
             </MapView.Marker>
@@ -116,7 +120,7 @@ export default function MapScreen () {
                 key={index}
                 >
                   <Image
-                    source={require('../assets/images/pin-green-icon.png')}
+                    source={require('../assets/images/pinacall_icon.png')}
                     style={{ width: 28, height: 28 }}
                   />
                 </MapView.Marker>
